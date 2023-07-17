@@ -27,6 +27,19 @@ def not_blank(question, error):
       continue
 
     return response
+
+def num_check(question, error, num_type):
+  valid = False
+  while not valid:
+    try:
+      response = num_type(input(question))
+      if response <= 0:
+        print(error)
+      else:
+        return response
+    
+    except ValueError:
+      print(error)
     
 # Main routine goes here
 
@@ -40,4 +53,7 @@ if show_instructions == "yes":
 print("\nRemember to make good choices about what you eat. A nutritious meal should include vegetables, protein and carbohydrates.\n")
 
 # Ask for the name of the recipe
-recipe_name = not_blank("What is the name of your recipe? ", "Sorry, the recipe name cannot be blank.")
+recipe_name = not_blank("What is the name of your recipe?: ", "Sorry, the recipe name cannot be blank.")
+
+# Ask how many people the recipe will serve
+servings = num_check("\nHow many servings will your recipe make?: ", "Please enter a valid number of servings.\n", float)
