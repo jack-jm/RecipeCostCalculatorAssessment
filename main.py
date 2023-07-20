@@ -57,3 +57,12 @@ recipe_name = not_blank("What is the name of your recipe?: ", "Sorry, the recipe
 
 # Ask how many people the recipe will serve
 servings = num_check("\nHow many servings will your recipe make?: ", "Please enter a valid number of servings.\n", float)
+
+print("Please enter the ingredients in your recipe below.\n")
+
+# Gets ingredient name and details
+ingredient_name = not_blank("Ingredient Name: ", "Please enter the ingredient name")
+
+quantity = num_check("Quantity (Number of units): ", "Please enter a valid number", float)
+
+unit_price = num_check("Price per unit: ", "Please enter a valid number", float)
