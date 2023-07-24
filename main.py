@@ -16,14 +16,13 @@ def yes_no(question):
 
     print("Please enter either yes or no.\n")
 
-# Functions go here
 def not_blank(question, error):
   valid = False
   while not valid:
     response = input(question)
 
     if response == "":
-      print("{}. \nPlease try again.\n".format(error))
+      print("{} \nPlease try again.\n".format(error))
       continue
 
     return response
@@ -50,10 +49,10 @@ if show_instructions == "yes":
   print("\n*Instructions to be added here*")
 
 # Shows message about healthy eating after instructions so my program has positive social implications
-print("\nRemember to make good choices about what you eat. A nutritious meal should include vegetables, protein and carbohydrates.\n")
+print("\nRemember to make good choices about what you eat. A nutritious meal should include vegetables, protein and carbohydrates.")
 
 # Ask for the name of the recipe
-recipe_name = not_blank("What is the name of your recipe?: ", "Sorry, the recipe name cannot be blank.")
+recipe_name = not_blank("\nWhat is the name of your recipe?: ", "Sorry, the recipe name cannot be blank.")
 
 # Ask how many people the recipe will serve
 servings = num_check("\nHow many servings will your recipe make?: ", "Please enter a valid number of servings.\n", float)
