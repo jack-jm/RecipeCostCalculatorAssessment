@@ -57,11 +57,30 @@ recipe_name = not_blank("\nWhat is the name of your recipe?: ", "Sorry, the reci
 # Ask how many people the recipe will serve
 servings = num_check("\nHow many servings will your recipe make?: ", "Please enter a valid number of servings.\n", float)
 
-print("Please enter the ingredients in your recipe below.\n")
+print("\nPlease enter the ingredients in your recipe below. Type 'xxx' when you are finished.\n")
 
-# Gets ingredient name and details
-ingredient_name = not_blank("Ingredient Name: ", "Please enter the ingredient name")
+# Creating lists to hold data collected about ingredients
+ingredient_list = []
+quantity_list = []
+price_list = []
 
-quantity = num_check("Quantity (Number of units): ", "Please enter a valid number", float)
+# Ingredient name defined as blank in the beginning
+ingredient_name = ""
 
-unit_price = num_check("Price per unit: ", "Please enter a valid number", float)
+# The next loop will only start if the last ingredient name was not 'xxx.' The first loop, ingredient name will be blank
+while ingredient_name != "xxx":
+  print()
+  
+  ingredient_name = not_blank("Ingredient Name: ", "Please enter a valid ingredient name.\n")
+  # If ingredient name is 'xxx', loop will break
+  if ingredient_name.lower() == "xxx":
+    break
+
+  quantity = num_check("\nQuantity (Number of Units): ", "Please enter a valid quantity.", float)
+
+  unit_price = num_check("\nPrice per Unit: $", "Please enter a valid price.", float)
+
+  # New data collected is added to the lists
+  ingredient_list.append(ingredient_name)
+  quantity_list.append(quantity)
+  price_list.append(unit_price)

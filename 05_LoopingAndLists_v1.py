@@ -53,6 +53,9 @@ while ingredient_name != "xxx":
   
   ingredient_name = not_blank("Ingredient Name: ", "Please enter a valid ingredient name.\n")
   if ingredient_name.lower() == "xxx":
+    print(ingredient_list)
+    print(quantity_list)
+    print(price_list)
     break
 
   quantity = num_check("\nQuantity (Number of Units): ", "Please enter a valid quantity.", float)
