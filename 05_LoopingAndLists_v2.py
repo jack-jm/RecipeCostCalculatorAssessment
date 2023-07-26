@@ -40,28 +40,28 @@ def num_check(question, error, num_type):
     except ValueError:
       print(error)
 
+def get_expenses(question, expense_type):
+  # Lists defined, will be appended
+  expense_list = []
+  quantity_list = []
+  price_list = []
+
+# Loop to get expense name, quantity and price
+  expense_name = ""
+  while expense_name.lower() != "xxx":
+    print()
+
+    expense_name = not_blank(question, "Please enter a valid name.\n")
+    if expense_name.lower() == "xxx":
+      break
+
+    if expense_type.lower() == "ingredient":
+      quantity = num_check("Quantity (Number of Units): ", "Please enter a valid quantity", float)
+    else:
+      quantity = 1
+
+    unit_price = num_check("Price per Unit: ")
+
+
+
 # Main routine goes here
-
-ingredient_list = []
-quantity_list = []
-price_list = []
-
-ingredient_name = ""
-
-while ingredient_name.lower() != "xxx":
-  print()
-  
-  ingredient_name = not_blank("Ingredient Name: ", "Please enter a valid ingredient name.\n")
-  if ingredient_name.lower() == "xxx":
-    print(ingredient_list)
-    print(quantity_list)
-    print(price_list)
-    break
-
-  quantity = num_check("\nQuantity (Number of Units): ", "Please enter a valid quantity.", float)
-
-  unit_price = num_check("\nPrice per Unit: $", "Please enter a valid price.", float)
-
-  ingredient_list.append(ingredient_name)
-  quantity_list.append(quantity)
-  price_list.append(unit_price)

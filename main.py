@@ -68,7 +68,7 @@ price_list = []
 ingredient_name = ""
 
 # The next loop will only start if the last ingredient name was not 'xxx.' The first loop, ingredient name will be blank
-while ingredient_name != "xxx":
+while ingredient_name.lower() != "xxx":
   print()
   
   ingredient_name = not_blank("Ingredient Name: ", "Please enter a valid ingredient name.\n")
