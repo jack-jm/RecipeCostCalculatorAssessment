@@ -39,6 +39,34 @@ def num_check(question, error, num_type):
     
     except ValueError:
       print(error)
+
+def get_expenses(question, expense_type):
+  # Lists defined, will be appended
+  expense_list = []
+  quantity_list = []
+  price_list = []
+
+# Loop to get expense name, quantity and price
+  expense_name = ""
+  while expense_name.lower() != "xxx":
+
+    expense_name = not_blank(question, "Please enter a valid name.\n")
+    if expense_name.lower() == "xxx":
+      break
+
+    if expense_type.lower() == "ingredient":
+      quantity = num_check("Quantity (Number of Units): ", "\nPlease enter a valid quantity\n", float)
+    else:
+      quantity = 1
+
+    unit_price = num_check("Price per Unit: $", "\nPlease enter a valid price\n", float)
+    
+    # Data collected is added to the lists
+    expense_list.append(expense_name)
+    quantity_list.append(quantit
+    price_list.append(unit_price)
+  # Lists are returned to the main routine
+  return expense_list, quantity_list, price_list
     
 # Main routine goes here
 
@@ -59,28 +87,13 @@ servings = num_check("\nHow many servings will your recipe make?: ", "Please ent
 
 print("\nPlease enter the ingredients in your recipe below. Type 'xxx' when you are finished.\n")
 
-# Creating lists to hold data collected about ingredients
-ingredient_list = []
-quantity_list = []
-price_list = []
+# Uses function to get ingredient details in lists
+ingredient_details = get_expenses("\nIngredient Name: ", "ingredient")
 
-# Ingredient name defined as blank in the beginning
-ingredient_name = ""
+# Asks if user has fixed costs and will either ask for them or not
+have_fixed = yes_no("Do you have any fixed costs (eg. electricity)? ")
+if have_fixed == "yes":
+  fixed_details = get_expenses("\nFixed Cost Name: ", "fixed")
 
-# The next loop will only start if the last ingredient name was not 'xxx.' The first loop, ingredient name will be blank
-while ingredient_name.lower() != "xxx":
+else:
   print()
-  
-  ingredient_name = not_blank("Ingredient Name: ", "Please enter a valid ingredient name.\n")
-  # If ingredient name is 'xxx', loop will break
-  if ingredient_name.lower() == "xxx":
-    break
-
-  quantity = num_check("\nQuantity (Number of Units): ", "Please enter a valid quantity.", float)
-
-  unit_price = num_check("\nPrice per Unit: $", "Please enter a valid price.", float)
-
-  # New data collected is added to the lists
-  ingredient_list.append(ingredient_name)
-  quantity_list.append(quantity)
-  price_list.append(unit_price)

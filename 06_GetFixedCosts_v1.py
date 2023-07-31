@@ -68,8 +68,13 @@ def get_expenses(question, expense_type):
   # Lists are returned to the main routine
   return expense_list, quantity_list, price_list
 
-
 # Main routine goes here
-ingredient_details = get_expenses("\nIngredient Name: ", "ingredient")
 
-print(ingredient_details)
+# Asks if user has fixed costs and will either ask for them or not
+have_fixed = yes_no("Do you have any fixed costs (eg. electricity)? ")
+if have_fixed == "yes":
+  fixed_details = get_expenses("\nFixed Cost Name: ", "fixed")
+  print(fixed_details)
+
+else:
+  print()
