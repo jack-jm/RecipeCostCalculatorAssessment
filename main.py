@@ -63,10 +63,30 @@ def get_expenses(question, expense_type):
     
     # Data collected is added to the lists
     expense_list.append(expense_name)
-    quantity_list.append(quantit
+    quantity_list.append(quantity)
     price_list.append(unit_price)
   # Lists are returned to the main routine
   return expense_list, quantity_list, price_list
+
+def get_totals(lists):
+  # Lists of quantities and prices renamed to make it easier and neater
+  final_quantities = lists[1]
+  final_prices = lists[2]
+
+  # Loop number and total cost defined as zero.
+  loop_number = 0
+  total_cost = 0
+
+  # Loop will run while the loop number is less than the number of ingredients
+  while loop_number < len(final_quantities):
+    # The amount to be added to the total cost per expense is calculated.
+    add_amount = final_quantities[loop_number] * final_prices[loop_number]
+    total_cost += add_amount
+    # 1 is added to the loop number after every loop
+    loop_number += 1
+
+  # Total cost is returned to the main routine
+  return total_cost
     
 # Main routine goes here
 
@@ -97,3 +117,22 @@ if have_fixed == "yes":
 
 else:
   print()
+
+
+print("\nHere are the final costs of your recipe:")
+
+ingredients_total = get_totals(ingredient_details)
+
+if have_fixed == "yes":
+ print("\nThe total cost of ingredients is ${:.2f}".format(ingredients_total))
+ fixed_total = get_totals(fixed_details)
+ print("\nThe total fixed costs are ${:.2f}".format(fixed_total))
+ final_total = ingredients_total + fixed_total
+
+else:
+  final_total = ingredients_total
+
+print("\nThe final total is ${:.2f}".format(final_total))
+serving_price = final_total / servings
+print("\nThe price per serving is ${:.2f}".format(serving_price))
+print("\n- Thank you for using Recipe Cost Calculator! -")
