@@ -94,7 +94,9 @@ def get_totals(lists):
 show_instructions = yes_no("Hello, would you like to read the instrutions? (Yes/No): ")
 
 if show_instructions == "yes":
-  print("\n*Instructions to be added here*")
+  print("\n- INSTRUCTIONS -")
+  print("You will be asked for your recipe's name and number of servings, then prompted to enter the ingredients in your recipe. Please enter the name, quantity and price per unit (price per quantity of one) of your first ingredient.")
+  print("\nOnce that is done, you can continue with the rest of your ingredients, until you are finished. Type 'xxx' to finish. You will then be prompted to enter any fixed costs, which are just like ingredients, but with no variable quantity. The total cost and price per serving will then be displayed.")
 
 # Shows message about healthy eating after instructions so my program has positive social implications
 print("\nRemember to make good choices about what you eat. A nutritious meal should include vegetables, protein and carbohydrates.")
