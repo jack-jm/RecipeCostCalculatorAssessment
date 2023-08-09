@@ -22,7 +22,7 @@ def not_blank(question, error):
     response = input(question)
 
     if response == "":
-      print("{} \nPlease try again.\n".format(error))
+      print("{}".format(error))
       continue
 
     return response
@@ -50,16 +50,17 @@ def get_expenses(question, expense_type):
   expense_name = ""
   while expense_name.lower() != "xxx":
 
-    expense_name = not_blank(question, "Please enter a valid name.\n")
+    expense_name = not_blank(question, "Please enter a valid name.")
     if expense_name.lower() == "xxx":
+      print()
       break
 
     if expense_type.lower() == "ingredient":
-      quantity = num_check("Quantity (Number of Units): ", "\nPlease enter a valid quantity\n", float)
+      quantity = num_check("Quantity (Number of Units): ", "Please enter a valid quantity\n", float)
     else:
       quantity = 1
 
-    unit_price = num_check("Price per Unit: $", "\nPlease enter a valid price\n", float)
+    unit_price = num_check("Price per Unit: $", "Please enter a valid price\n", float)
     
     # Data collected is added to the lists
     expense_list.append(expense_name)
@@ -91,7 +92,7 @@ def get_totals(lists):
 # Main routine goes here
 
 # Ask if user wants to see the instructions or not
-show_instructions = yes_no("Hello, would you like to read the instrutions? (Yes/No): ")
+show_instructions = yes_no("Hello and welcome to this program. Would you like to read the instrutions? (Yes/No): ")
 
 if show_instructions == "yes":
   print("\n- INSTRUCTIONS -")
@@ -105,7 +106,7 @@ print("\nRemember to make good choices about what you eat. A nutritious meal sho
 recipe_name = not_blank("\nWhat is the name of your recipe?: ", "Sorry, the recipe name cannot be blank.")
 
 # Ask how many people the recipe will serve
-servings = num_check("\nHow many servings will your recipe make?: ", "Please enter a valid number of servings.\n", float)
+servings = num_check("\nHow many servings will your recipe make?: ", "Please enter a valid number of servings.", float)
 
 print("\nPlease enter the ingredients in your recipe below. Type 'xxx' when you are finished.\n")
 
@@ -121,7 +122,7 @@ else:
   print()
 
 
-print("\nHere are the final costs of your recipe:")
+print("\n-----------------------\n\n\nHere are the final costs of your recipe:")
 
 ingredients_total = get_totals(ingredient_details)
 
