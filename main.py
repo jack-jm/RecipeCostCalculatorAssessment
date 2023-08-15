@@ -1,7 +1,8 @@
 # Functions go here
 def yes_no(question):
   to_check = ["yes", "no"]
-  
+
+  # Not valid until the user responds with either 'yes', 'no', or the first letters of them.
   valid = False
   while not valid:
     response = input(question).lower()
